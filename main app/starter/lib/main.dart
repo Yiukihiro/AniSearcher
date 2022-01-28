@@ -1,43 +1,57 @@
+// ignore_for_file: avoid_print, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Starter());
+void main() => runApp(_Starter());
 
-class Starter extends StatelessWidget {
-  const Starter({Key? key}) : super(key: key);
+class _Starter extends StatefulWidget {
+  _Starter({Key? key}) : super(key: key);
 
-  void answering(){
-    print('got it');
+  @override
+  State<_Starter> createState() => _StarterState();
+}
+
+class _StarterState extends State<_Starter> {
+
+  var _questionIndex = 0;
+  void _questionNum(){
+    setState((){
+      _questionIndex = _questionIndex +1;
+      }
+      );
+    print(_questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    // var questions = ['Question 1', 'Question 2'];
+    var _questions = ['Question 1', 'Question 2',];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Center(
-            child: Text('Text here'),
+            child: Text('Text app'),
           ),
         ),
         body: Column(
           children: [
-            const Text('Question 1'),
-            ElevatedButton(
-              onPressed: answering,
+            Text(
+              _questions[_questionIndex],),
+            ElevatedButton( 
+              onPressed: _questionNum,
               child: const Text(
                 'First answer',
                 style: TextStyle(fontSize: 14),
               ),
             ),
             ElevatedButton(
-              onPressed: answering,
+              onPressed: () => print('got secons'),
               child: const Text(
                 'Second answer',
                 style: TextStyle(fontSize: 14),
               ),
             ),
             ElevatedButton(
-              onPressed: answering,
+              onPressed: () => print('got third'),
               child: const Text(
                 'Third answer',
                 style: TextStyle(fontSize: 14),
