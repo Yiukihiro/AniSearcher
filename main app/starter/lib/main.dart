@@ -2,29 +2,34 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(_Starter());
+import 'package:starter/question.dart';
+import 'package:starter/answer.dart';
 
-class _Starter extends StatefulWidget {
-  _Starter({Key? key}) : super(key: key);
+
+void main() => runApp(Starter());
+
+class Starter extends StatefulWidget {
+  Starter({Key? key}) : super(key: key);
 
   @override
-  State<_Starter> createState() => _StarterState();
+  State<Starter> createState() => _StarterState();
 }
 
-class _StarterState extends State<_Starter> {
-
+class _StarterState extends State<Starter> {
   var _questionIndex = 0;
-  void _questionNum(){
-    setState((){
-      _questionIndex = _questionIndex +1;
-      }
-      );
+  void _questionNum() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
     print(_questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    var _questions = ['Question 1', 'Question 2',];
+    var _questions = [
+      'First Question',
+      'Second Question or u will die in ten seconds?',
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -34,29 +39,12 @@ class _StarterState extends State<_Starter> {
         ),
         body: Column(
           children: [
-            Text(
-              _questions[_questionIndex],),
-            ElevatedButton( 
-              onPressed: _questionNum,
-              child: const Text(
-                'First answer',
-                style: TextStyle(fontSize: 14),
-              ),
+            Question(
+              _questions[_questionIndex],
             ),
-            ElevatedButton(
-              onPressed: () => print('got secons'),
-              child: const Text(
-                'Second answer',
-                style: TextStyle(fontSize: 14),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => print('got third'),
-              child: const Text(
-                'Third answer',
-                style: TextStyle(fontSize: 14),
-              ),
-            ),
+            Answer(_questionNum),
+            Answer(_questionNum),
+            Answer(_questionNum),
           ],
         ),
       ),
