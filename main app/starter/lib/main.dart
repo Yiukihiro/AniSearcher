@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:starter/question.dart';
 import 'package:starter/answer.dart';
-
+import 'package:starter/questions_list.dart';
 
 void main() => runApp(Starter());
 
@@ -18,18 +18,18 @@ class Starter extends StatefulWidget {
 class _StarterState extends State<Starter> {
   var _questionIndex = 0;
   void _questionNum() {
+    questionS;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+    if (_questionIndex < questionS.length) {
+      print('we have more questions');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var _questions = [
-      'First Question',
-      'Second Question or u will die in ten seconds?',
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -40,11 +40,12 @@ class _StarterState extends State<Starter> {
         body: Column(
           children: [
             Question(
-              _questions[_questionIndex],
+              questionS[_questionIndex]['textQuestion'] as String,
             ),
-            Answer(_questionNum),
-            Answer(_questionNum),
-            Answer(_questionNum),
+            ...(questionS[_questionIndex]['answerButtons'] as List<String>)
+                .map((answer) {
+              return Answer(_questionNum, answer);
+            }).toList()
           ],
         ),
       ),
