@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:starter/question.dart';
-import 'package:starter/answer.dart';
 import 'package:starter/questions_list.dart';
+import 'package:starter/blockbody.dart';
+import 'result.dart';
 
 void main() => runApp(Starter());
 
@@ -22,9 +22,9 @@ class _StarterState extends State<Starter> {
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-    print(_questionIndex);
+    // print(_questionIndex);
     if (_questionIndex < questionS.length) {
-      print('we have more questions');
+      // print('we have more questions');
     }
   }
 
@@ -37,17 +37,10 @@ class _StarterState extends State<Starter> {
             child: Text('Text app'),
           ),
         ),
-        body: Column(
-          children: [
-            Question(
-              questionS[_questionIndex]['textQuestion'] as String,
-            ),
-            ...(questionS[_questionIndex]['answerButtons'] as List<String>)
-                .map((answer) {
-              return Answer(_questionNum, answer);
-            }).toList()
-          ],
-        ),
+        body: _questionIndex < questionS.length
+            ? BodyBlock(
+                questionNum: _questionNum, questionIndex: _questionIndex)
+            : const Result(),
       ),
     );
   }
