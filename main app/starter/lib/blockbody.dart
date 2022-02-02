@@ -5,10 +5,9 @@ import 'question.dart';
 import 'questions_list.dart';
 
 class BodyBlock extends StatelessWidget {
-  // const BodyBlock({ Key? key }) : super(key: key);
 
   final int questionIndex;
-  final VoidCallback questionNum;
+  final Function questionNum;
 
   BodyBlock({required this.questionIndex,required this.questionNum});
 
@@ -19,9 +18,9 @@ class BodyBlock extends StatelessWidget {
         Question(
           questionS[questionIndex]['textQuestion'] as String,
         ),
-        ...(questionS[questionIndex]['answerButtons'] as List<String>)
+        ...(questionS[questionIndex]['answerButtons'] as List<Map<String, Object>>)
             .map((answer) {
-          return Answer(questionNum, answer);
+          return Answer(() => questionNum(answer['score']), answer['text'] as String);
         }).toList()
       ],
     );

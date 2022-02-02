@@ -17,15 +17,22 @@ class Starter extends StatefulWidget {
 
 class _StarterState extends State<Starter> {
   var _questionIndex = 0;
-  void _questionNum() {
+  var _totalScore = 0;
+
+  void _restart() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _questionNum(int score) {
     questionS;
+
     setState(() {
       _questionIndex = _questionIndex + 1;
+      _totalScore = _totalScore + score;
     });
-    // print(_questionIndex);
-    if (_questionIndex < questionS.length) {
-      // print('we have more questions');
-    }
   }
 
   @override
@@ -40,7 +47,7 @@ class _StarterState extends State<Starter> {
         body: _questionIndex < questionS.length
             ? BodyBlock(
                 questionNum: _questionNum, questionIndex: _questionIndex)
-            : const Result(),
+            : Result(_totalScore, _restart),
       ),
     );
   }
