@@ -22,6 +22,7 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
           child: Text(
@@ -30,7 +31,6 @@ class Result extends StatelessWidget {
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
-        // ignore: deprecated_member_use
         TextButton(
           onPressed: restart,
           style: ButtonStyle(
