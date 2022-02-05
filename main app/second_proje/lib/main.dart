@@ -9,12 +9,12 @@ class _second extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-
-        ),
+        appBar: AppBar(),
         body: Container(),
-        bottomNavigationBar: BottomNavigationBar(items: [],),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [],
+        ),
       ),
-    )
+    );
   }
 }
