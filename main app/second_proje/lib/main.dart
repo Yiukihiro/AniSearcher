@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'body.dart';
+import 'widgets/body.dart';
 
-void main() => runApp(_second());
+void main() => runApp(_Second());
 
-class _second extends StatelessWidget {
-  const _second({Key? key}) : super(key: key);
+class _Second extends StatelessWidget {
+  const _Second({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
