@@ -29,7 +29,7 @@ class _NewPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child: Text('Transactions'),
+          child: Text('Траты'),
         ),
       ),
       body: BodyBlank(),
