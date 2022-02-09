@@ -8,6 +8,19 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction(this.addTx, {Key? key}) : super(key: key);
 
+  void submitData() {
+    final checkTController = titleController.text;
+    final chickPController = double.parse(priceController.text);
+
+    if (checkTController.isEmpty || chickPController <= 0) {
+      return;
+    }
+    addTx(
+      checkTController,
+      chickPController,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,20 +31,19 @@ class NewTransaction extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextField(
-              decoration: const InputDecoration(hintText: 'Что куплено'),
+              decoration: const InputDecoration(
+                  hintText: 'Что куплено / Не более 7 символов'),
               controller: titleController,
             ),
             TextField(
-              decoration: const InputDecoration(hintText: 'Сумма'),
+              decoration:
+                  const InputDecoration(hintText: 'Сумма / Не более 7 знаков'),
               controller: priceController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
             ),
             TextButton(
-              onPressed: () {
-                addTx(
-                  titleController.text,
-                  double.parse(priceController.text),
-                );
-              },
+              onPressed: submitData,
               child: const Text(
                 'Добавить',
                 style: TextStyle(color: Colors.white),
