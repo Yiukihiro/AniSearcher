@@ -15,12 +15,13 @@ class _Second extends StatelessWidget {
     return MaterialApp(
       title: 'Get New App',
       theme: ThemeData(
+        primarySwatch: Colors.amber,
+        fontFamily: 'Apple',
+        // textTheme: ThemeData.light().textTheme.copyWith(
+        //       headline5: const TextStyle(fontFamily: 'Apple', fontSize: 20),
+        //     ),
         brightness: Brightness.light,
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      themeMode: ThemeMode.dark,
       home: _NewPage(),
     );
   }
@@ -75,10 +76,14 @@ class _NewPageState extends State<_NewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter app'),
+        title: Container(
+          margin: const EdgeInsets.only(left: 50),
+          child: const Center(
+            child: Text('Transactions'),
+          ),
+        ),
         actions: [
           IconButton(
-            color: Colors.amber,
             onPressed: () => _startNewTransaction(context),
             icon: const Icon(Icons.add),
           ),

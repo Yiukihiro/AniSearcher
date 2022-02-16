@@ -23,13 +23,15 @@ class TransactionsList extends StatelessWidget {
                 Container(
                   width: 180,
                   margin: const EdgeInsets.only(right: 50),
-                  child: Text(
-                    // Цена
-                    '${usertransaction[index].amount.toStringAsFixed(2)} руб',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.green,
+                  child: Center(
+                    child: Text(
+                      // Цена
+                      '${usertransaction[index].amount.toStringAsFixed(2)} руб',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.green,
+                      ),
                     ),
                   ),
                   decoration: BoxDecoration(
@@ -45,7 +47,6 @@ class TransactionsList extends StatelessWidget {
                       usertransaction[index].name,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.amber,
                         fontSize: 20,
                       ),
                     ),
